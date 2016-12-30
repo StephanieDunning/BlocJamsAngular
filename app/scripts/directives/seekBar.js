@@ -11,7 +11,7 @@
         };
         
         return {
-            templateURL: '/templates/directives/seek_bar.html',
+            templateUrl: '/templates/directives/seek_bar.html',
             replace: true,
             restrict: 'E',
             scope: { },
@@ -31,6 +31,10 @@
                 scope.fillStyle = function() {
                     return {width: percentString()};
                 };
+                
+                scope.thumbStyle = function() {
+                    return {left: percentString()};
+                };
         
                 scope.onClickSeekBar = function(event) {
                     var percent = calculatePercent(seekBar, event);
@@ -41,9 +45,10 @@
                     $document.bind('mousemove.thumb', function(event) {
                         var percent = calculatePercent(seekBar, event);
                         scope.$apply(function() {
-                            scope.value = percent * scope.max;
+	                       scope.value = percent * scope.max;
                         });
                     });
+                    
  
                     $document.bind('mouseup.thumb', function() {
                         $document.unbind('mousemove.thumb');
