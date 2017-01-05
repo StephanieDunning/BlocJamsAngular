@@ -136,6 +136,12 @@
             }
         };
         
+        SongPlayer.setVolume = function(volume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
+            }
+        };
+        
         /**
         * @function SongPlayer.previous
         * @desc Get index of current song, decrement by 1
@@ -152,6 +158,8 @@
                 playSong(song);
             }
         };
+        
+        SongPlayer.volume = null;
                
         return SongPlayer;
     }
